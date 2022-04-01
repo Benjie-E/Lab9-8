@@ -16,43 +16,30 @@
  database for the purpose of future plagiarism checking)
  */
 #include "groceries.h"
-GroceryItem::GroceryItem() {
-	// TODO Auto-generated constructor stub
 
-}
-
-GroceryItem::~GroceryItem() {
-	// TODO Auto-generated destructor stub
-}
-
-Vegetable::Vegetable(string name) {
+Vegetable::Vegetable(string name,double weight) {
 	this->name=name;
-}
-
-Vegetable::~Vegetable() {
-	// TODO Auto-generated destructor stub
+	this->weight=weight;
 }
 
 Vegetable::Vegetable() {
+	name="Unknown";
+	weight=0;
 }
 
 string Vegetable::getDescription() {
-	cout << "HI";
-	return this->name;
+	stringstream desc;
+	desc << name << " that weighs " << weight << "lbs";
+	return desc.str();
 }
 
-Pepper::Pepper(string color) {
+Pepper::Pepper(string name,double weight,int scoville,string color) : Vegetable(name,weight) {
 	this->color=color;
-	this->name="pepper";
-}
-
-Pepper::~Pepper() {
-	// TODO Auto-generated destructor stub
-}
-
-Pepper::Pepper() {
+	this->scoville=scoville;
 }
 
 string Pepper::getDescription() {
-	return "PEPPER TEST";
+	stringstream desc;
+		desc << name <<" "<< "Pepper" << " that weighs " << weight << "lbs, has a scoville rating of "<<scoville <<", and is "<<color;
+		return desc.str();
 }

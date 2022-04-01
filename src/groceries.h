@@ -19,34 +19,30 @@
 #define GROCERIES_H_
 #include <string>
 #include <iostream>
+#include <sstream>
 using namespace std;
 class GroceryItem {
 public:
-	GroceryItem();
-	virtual ~GroceryItem();
-	//GroceryItem(const GroceryItem &other);
 	virtual string getDescription() = 0;
 };
 
 class Vegetable: public GroceryItem {
 public:
 	Vegetable();
-	Vegetable(string name);
-	virtual ~Vegetable();
-	//Vegetable(const Vegetable &other);
-	string getDescription();
+	Vegetable(string name,double weight);
+	string getDescription() override;
 protected:
 	string name;
+	double weight;
 };
 
 class Pepper: public Vegetable {
 public:
-	Pepper();
-	Pepper(string color);
-	virtual ~Pepper();
+	Pepper(string name,double weight,int scoville,string color);
 protected:
 	string color;
-	string getDescription();
+	int scoville;
+	string getDescription() override;
 };
 
 #endif /* GROCERIES_H_ */
